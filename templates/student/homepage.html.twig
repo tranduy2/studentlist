@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Student_Management{% endblock %}
+
+{% block body %}
+<style>
+@keyframes slide-in {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+</style>
+    <div>
+    #<h2 style="text-align:center; color:blue; animation: slide-in 3s ease-in-out; animation: slide-in 3s ease-in-out infinite; ">WELCOME TO THE CLASS</h2>#
+    </div>    <div id="slider">
+            <figure>
+                <img src="{{ asset('images/slide10.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide11.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide12.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide13.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide11.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide15.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide16.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide17.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide18.jpg') }}" alt=""/>
+            </figure>
+        </div>
+    <div class="container-md">
+        <div class="row">
+            
+            <div class="col-9">
+                <div class="container">
+                    <h1 style="top:20px; color: white">Student List</h1>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        {% for student in students %}
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ student.Name }}</h5>
+                                        <h6 class="card-title"> {{ student.Dob|date('d-m-Y') }}</h6>
+                                        <p >Gender: {{ student.Gender }}</p>
+                                        <p >Class: {{ student.Class.Name }}</p>
+                                        
+                                    </div>
+                                    <div class="card-footer">       
+                                        <a href="{{ path('app_student_show', {'id': student.id}) }}"
+                                           class="btn btn-primary">Show</a>
+                                        <a href="{{ path('app_student_edit', {'id': student.id}) }}"
+                                           class="btn btn-primary">Edit</a>   
+                                    </div>   
+                                </div>
+                            </div>
+                        {% endfor %}
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="{{ path('app_student_new') }}" class="btn btn-primary">Create new</a>
+    </div>
+     
+{% endblock %}

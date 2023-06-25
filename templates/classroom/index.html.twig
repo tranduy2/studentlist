@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classroom index{% endblock %}
+
+{% block body %}
+    
+<div id="slider">
+            <figure>
+                <img src="{{ asset('images/slide6.png') }}" alt=""/>
+                <img src="{{ asset('images/slide7.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide8.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide9.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide10.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide11.jpg') }}" alt=""/>
+                
+            </figure>
+        </div>
+    <h1 style="color: white;">Classroom</h1>
+<div class="container-md">
+    <div class="row">
+            
+        <div class="col-9">
+            <div class="container">
+                    
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                {% for classroom in classrooms %}
+                <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ classroom.Name }}</h5>
+                                        <h6 class="card-title">Department:  {{ classroom.Department}}</h6>
+                                        <p >Member:  {{ classroom.NumberOfMenbers }}</p>
+                                    </div>
+                                    <div class="card-footer">       
+                                        <a href="{{ path('app_classroom_show', {'id': classroom.id}) }}"
+                                           class="btn btn-primary">Show</a>
+                                        <a href="{{ path('app_classroom_edit', {'id': classroom.id}) }}"
+                                           class="btn btn-primary">Edit</a>   
+                                    </div>   
+                                </div>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+                 
+        </div>
+    </div>
+</div>
+        <br>
+        <a href="{{ path('app_classroom_new') }}" class="btn btn-primary">Create new</a>
+{% endblock %}

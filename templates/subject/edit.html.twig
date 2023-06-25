@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Subject{% endblock %}
+
+{% block body %}
+    <h1 style="color: white;">Edit Subject</h1>
+
+    {{ include('subject/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_subject_index') }}" class="white-text">back to list</a>
+
+    {{ include('subject/_delete_form.html.twig') }}
+{% endblock %}

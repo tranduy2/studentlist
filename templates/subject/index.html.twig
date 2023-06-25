@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Subject index{% endblock %}
+
+{% block body %}
+    
+<div id="slider">
+            <figure>
+                <img src="{{ asset('images/slide6.png') }}" alt=""/>
+                <img src="{{ asset('images/slide7.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide8.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide9.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide10.jpg') }}" alt=""/>
+                <img src="{{ asset('images/slide11.jpg') }}" alt=""/>
+                
+            </figure>
+        </div>
+        <h1 style="color: white;">Subject List</h1>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        {% for subject in subjects %}
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ subject.id }}</h5>
+
+                                        <h5 class="card-title">Name: {{ subject.Name }}</h5>
+                                    </div>
+                                    <div class="card-footer">       
+                                        <a href="{{ path('app_subject_show', {'id': subject.id}) }}"
+                                           class="btn btn-primary">Show</a>
+                                        <a href="{{ path('app_subject_edit', {'id': subject.id}) }}"
+                                           class="btn btn-primary">Edit</a>   
+                                    </div>   
+                                </div>
+                            </div>
+                        {% endfor %}
+                       
+                    </div>
+
+            <a href="{{ path('app_subject_new') }}" class="btn btn-primary">Create new</a>
+
+{% endblock %}

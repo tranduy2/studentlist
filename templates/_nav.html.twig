@@ -1,0 +1,32 @@
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=devide-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        
+
+        
+    </head>
+
+    <body>
+        <section id="header">
+            { <img src="{{ asset('images/aurora.png') }}" class="logo" alt="" width="326px" height="126px"/> }
+
+            <div>
+                <tr id="navbar">
+                    <td><a class="active" href="{{ path('app_student_index') }}">Home</a></td>
+                    <td><a href="{{ path('app_student_index') }}">Student List</a></td>
+                    <td><a href="{{ path('app_score_index') }}">Score</a></td>
+                    <td><a href="{{ path('app_subject_index') }}">Subject</a></td>
+                    <td><a href="{{ path('app_classroom_index') }}">Class</a></td>
+                    {% if app.user %}
+                        {# <td class="nav-item"><a class="nav-link">Hello {{ app.user.FullName }}</a></td> #}
+                        {# <td><a class="active" href="{{ path('app_review_cart') }}"><img src="{{ asset('images/cart.png') }}" width="30px" height="30px" /></a></td> #}
+                    {% endif %}
+                    
+                </tr>
+            </div>
+        </section>     
+    </body>

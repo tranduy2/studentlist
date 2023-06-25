@@ -1,0 +1,41 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Student List{% endblock %}
+
+{% block body %}
+    <div class="container-md">
+        <div class="row">
+            
+            <div class="col-9">
+                <div class="container">
+                    <h4 style="top:20px">Student List</h4>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        {% for student in students %}
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ student.Name }}</h5>
+                                        <h6 class="card-title"> {{ student.Dob|date('d-m-Y') }}</h6>
+                                        <p >Gender: {{ student.Gender }}</p>
+                                        <p >Class: {{ student.Class.Name }}</p>
+                                        
+                                    </div>
+                                    <div class="card-footer">       
+                                        <a href="{{ path('app_student_show', {'id': student.id}) }}"
+                                           class="btn btn-primary">Show</a>
+                                        <a href="{{ path('app_student_edit', {'id': student.id}) }}"
+                                           class="btn btn-primary">Edit</a>   
+                                    </div>   
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="card-footer">       
+                            <a href="{{ path('app_student_new') }}" class="btn btn-primary" >Create new</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
